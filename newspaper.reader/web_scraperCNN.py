@@ -21,25 +21,27 @@ def parse_html(html):
         article_name = ("Title: {}".format(news.text))
         print(article_name)
         article_link = ("https://www.cnn.com{}".format(news.a['href']))
-        print(article_link)
-        article_list.append((article_name,article_link))
-        # specific_articles = download_page(article_link)
-        # article_info = BeautifulSoup(specific_articles,features="html.parser")
-        # article_info.find_all('p',{'class':'zn-body__paragraph speakable'})
-        # article_summary = ("Brief: {}".format(news.text))
-        # print(article_summary)
-        # article_list.append(article_summary)
+        print (f'Link: {article_link}')
+        specific_articles = download_page(article_link)
+        summary_soup = BeautifulSoup(specific_articles,features="html.parser")
+        for links in summary_soup.find_all('p',{'class':'zn-body__paragraph speakable'}):
+            article_summary = ("Brief: {}".format(links.text))
+            print(article_summary)
+            article_list.append((article_name,article_link,article_summary))
     return article_list
    
 # parse_html(download_page(DOWNLOAD_URL).read())
 
+
+
 def main():
     url = DOWNLOAD_URL
+
 
     with open('newspaper.reader/web_scraper.csv', 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
 
-        fields = ('articles,links')
+        fields = ('article','link','summary')
         writer.writerow(fields)
 
         html = download_page(url)
