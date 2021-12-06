@@ -29,9 +29,8 @@ def parse_html(html):
             print(article_summary)
             article_list.append((article_name,article_link,article_summary))
     return article_list
-   
+    
 # parse_html(download_page(DOWNLOAD_URL).read())
-
 
 
 def main():

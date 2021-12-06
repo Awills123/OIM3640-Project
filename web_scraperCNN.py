@@ -10,7 +10,7 @@ def download_page(url):
     return urllib.request.urlopen(url)
 
 
-def parse_html(html):
+def parse_html1(html):
     """analyze the html page, find the information and return the move list of tuples (movie_name, year)"""
     soup = BeautifulSoup(html, features="html.parser")
 #     # print(soup.prettify())
@@ -29,9 +29,6 @@ def parse_html(html):
             print(article_summary)
             article_list.append((article_name,article_link,article_summary))
     return article_list
-   
-# parse_html(download_page(DOWNLOAD_URL).read())
-
 
 
 def main():
@@ -45,7 +42,7 @@ def main():
         writer.writerow(fields)
 
         html = download_page(url)
-        articles = parse_html(html)
+        articles = parse_html1(html)
         writer.writerows(articles)
 
 
