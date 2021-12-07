@@ -30,6 +30,8 @@ def parse_html1(html):
             article_list.append((article_name,article_link,article_summary))
     return article_list
 
+def return_CNN():
+    return parse_html1(download_page(DOWNLOAD_URL).read())
 
 def main():
     url = DOWNLOAD_URL

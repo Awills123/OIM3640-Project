@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Latest Health News</title>
+    <title>Find a Word!</title>
   </head>
   <body>
+    <form action = "/search/" method="GET">
+        <input type = "text" name = "q"> 
+        <input type = "submit" value = "search a word">
+    </form>
     <h1>Latest Health News</h1>
-    {% for each in all_content %}
+    {% for each in filtered_content %}
     <h2>{{ each[0] }}</h2>
     <p>{{each[2]}}</p>
     <a href={{ each[1] }}>Read more...</a>

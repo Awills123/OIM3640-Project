@@ -24,13 +24,15 @@ def parse_html(html):
         print (f'Link: {article_link}')
         specific_articles = download_page(article_link)
         summary_soup = BeautifulSoup(specific_articles,features="html.parser")
-        for links in summary_soup.find_all('p',{'class':'speakable'}):
-            article_summary = ("Brief: {}".format(links.text))
-            print(article_summary)
-            article_list.append((article_name,article_link,article_summary))
+        links = summary_soup.find_all('p',{'class':'speakable'})
+        all_text = " ".join(link.text for link in links)
+        article_summary = ("Brief: {}".format(all_text))
+        print(article_summary)
+        article_list.append((article_name,article_link,article_summary))
     return article_list
     
-# parse_html(download_page(DOWNLOAD_URL).read())
+def return_FOX():
+    return parse_html(download_page(DOWNLOAD_URL).read())
 
 
 def main():

@@ -1,1 +1,3 @@
 # OIM3640-Project
+
+To run this project, you need to install Beautiful soup as well as Flask to your python library. After doing this, all you need to do is run app.py and click on the link that is outputted in the terminal. Within this website are two links: One that shows all articles and one that introduces a search bar to look for keywords in the title of the article. That is all you need to run our project and look at the latest health news! 
